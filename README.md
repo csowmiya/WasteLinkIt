@@ -1,7 +1,7 @@
 #  WasteLinkIt
 
 > Smart Plastic Waste Prediction & Trading Platform  
-> Built using **Flask + React + MongoDB + LSTM**
+> Built using **Flask + HTML + MongoDB + LSTM**
 
 ---
 
@@ -90,4 +90,229 @@ FILL LOGISTICS PAGE
 
 TRACK LOGISTICS PAGE
 ![Image](https://github.com/user-attachments/assets/51fa19bf-e3bc-4600-ab2d-8c6c3405ec59)
+
+---
+
+## Installation
+### Prerequisites
+- Make sure the following tools are installed:
+
+- Python 3.8+
+
+- MongoDB (local or MongoDB Atlas)
+
+- Git
+
+- Web Browser (Chrome, Firefox, etc.)
+
+### Steps
+
+#### 1. Clone the Repository
+
+```bash
+git clone https://github.com/csowmiya/WasteLinkIt.git
+```
+#### 2. Navigate to the Project Directory
+
+```bash
+cd WasteLinkIt
+```
+### 3. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+### 4.Run the Application
+``bash
+python app.py
+``
+### 5.Access the Tool: Open a web browser and navigate to http://localhost:5000.
+
+---
+
+## Usage
+
+This section explains how different users interact with the platform and how the plastic waste prediction and trading flow works.
+
+---
+
+### Producer Flow
+
+1. Open the frontend (`index.html`) in a browser.
+2. Go to the **Producer Dashboard**.
+3. Enter estimated waste quantities by plastic type and district.
+4. Later, confirm the actual waste available.
+5. View waste history and manage logistics.
+
+---
+
+### Buyer Flow
+
+1. Open the frontend and access the **Buyer Dashboard**.
+2. View upcoming predictions for the next 6 months.
+3. Choose to:
+   - **Pre-book** plastic waste based on forecasted availability.
+   - **Instant book** available waste.
+4. Receive **email notifications** when:
+   - Booking is confirmed.
+   - There’s a shortage or mismatch.
+
+---
+
+### Prediction Flow (LSTM)
+
+- Predictions are generated using an LSTM model for each district and plastic type.
+- The backend provides this data through `/api/predictions`.
+- The frontend displays the predictions in:
+  - Interactive line charts
+  - Searchable, filterable tables
+
+---
+
+### Data Auto-Update Logic
+
+- Once per month (can be automated), new data is added and predictions are recalculated.
+- System forecasts for the **next 6 months** based on latest inputs.
+
+---
+
+### System Overview
+
+- All actions (prebooking, confirmation, instant booking, logistics tracking) are connected to MongoDB.
+- A **unified `bookings` collection** is used for easier tracking and dashboard updates.
+
+---
+
+## API Endpoints
+
+---
+
+### Authentication
+
+`POST /login`  
+Authenticate user and start a session (producer or buyer)
+
+`GET /logout`  
+Logout user and clear the session
+
+---
+
+### Prediction
+
+`GET /api/predictions`  
+Get plastic waste predictions by district and plastic type
+
+---
+
+### Producer APIs
+
+`POST /api/estimated-waste`  
+Submit estimated waste by plastic type and district
+
+`POST /api/confirm-waste`  
+Confirm actual waste available for the current month
+
+`GET /api/producer/history`  
+View producer’s waste update history
+
+---
+
+### Buyer APIs
+
+`POST /api/prebook`  
+Pre-book plastic waste based on prediction
+
+`POST /api/instant-book`  
+Instantly book currently available plastic waste
+
+`GET /api/buyer/history`  
+View buyer’s past booking history
+
+---
+
+### Notifications
+
+`POST /api/send-email`  
+Send email alert to buyer (for confirmations or shortages)
+
+---
+
+### Example Request
+
+`POST /api/prebook`  
+Host: `localhost:5000`  
+Content-Type: `application/json`
+
+```json
+{
+  "buyer_id": "buyer123",
+  "district": "Coimbatore",
+  "plastic_type": "PET",
+  "quantity": 50
+}
+```
+### Example Response
+
+```json
+{
+  "status": "success",
+  "message": "Pre-booking confirmed",
+  "booking_id": "64f8a12bc9e2de00123abc45"
+}
+```
+--- 
+
+## Testing
+
+---
+
+### Unit Testing
+
+Tests individual components to ensure they function correctly in isolation.
+
+- Validate ML prediction output using sample inputs
+- Test booking logic (pre-book and instant book)
+- Test email notification triggers
+- Verify session-based login/logout mechanisms
+
+---
+
+### Integration Testing
+
+Verifies the integration between different modules.
+
+- Test frontend → backend API connection using `fetch()`
+- Test booking flows between buyers and producers
+- Test MongoDB read/write operations for waste and booking data
+
+---
+
+### Running Tests
+
+Use **Postman** to test and validate backend APIs.
+
+- Import the provided Postman collection (if available)
+- Run test cases and verify JSON responses
+
+```bash
+newman run WasteLinkIt.postman_collection.json -r html,cli
+```
+---
+
+## License
+
+This project is licensed under the **MIT License** – see the [LICENSE](LICENSE) file for details.
+
+---
+
+## Contact
+
+For any questions, feedback, or support, feel free to reach out:
+
+**Sowmiya C.**  
+ Email: sowmi7810@gmail.com  
+ GitHub: [csowmiya](https://github.com/csowmiya)
+
+---
+
 
