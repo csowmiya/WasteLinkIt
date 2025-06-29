@@ -46,4 +46,12 @@ It enables producers to list available waste and buyers to pre-book or instantly
 
 ##  Screenshots
 
+HOME PAGE
+![Image](https://github.com/user-attachments/assets/29501641-e903-43b9-8f5e-b7b981c78cdb)
+
+PREDICTION GRAPH
+![Image](https://github.com/user-attachments/assets/4841c8b5-3a25-445c-a07a-f7e200fa10b4)
+
+PREDICTIONS
+![Image](https://github.com/user-attachments/assets/8b571d52-e2a1-42c6-a076-e03c2310ff5e)
 
