@@ -20,7 +20,7 @@
 
 ---
 
-## 🧩 Introduction
+##  Introduction
 
 **WasteLinkIt** is a full-stack web platform that helps predict, pre-book, and manage plastic waste in Tamil Nadu using machine learning.  
 It enables producers to list available waste and buyers to pre-book or instantly purchase based on **LSTM-powered predictions**.
@@ -40,4 +40,10 @@ It enables producers to list available waste and buyers to pre-book or instantly
 
 ##  Architecture
 
-    
+![Image](https://github.com/user-attachments/assets/e4e6e067-2e28-4f8f-b133-2ad6bfd9b2d1)
+
+---
+
+##  Screenshots
+
+
